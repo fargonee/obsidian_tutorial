@@ -1,0 +1,292 @@
+{
+    "project_level_description": "FarGoneE-Education taqdim etadi: Obsidian — bepul, lokal saqlanadigan bilim bazasi va markdown muharriri. Ushbu qisqa video seriya orqali o‘zbek tilida Obsidian’ning asosiy funksiyalarini o‘rganing. \n\nFarGoneE — ilm va texnologiyalarni rivojlantirishga bag‘ishlangan brend. \n\nYouTube/Telegram/Instagram: @fargoneengineering \nQo‘shimcha materiallar (ko'rsatmalar + gif-videolar): bitherd.netlify.app/fargonee/education/obsidian_tutorial",
+    "project_level_tags": [
+        "Obsidian/Obsidian",
+        "Markdown/Markdown",
+        "BilimBazasi/KnowledgeBase",
+        "OzbekchaDarslar/UzbekTutorial",
+        "FarGoneE/FarGoneE",
+        "Fargoniy/Fergani"
+    ],
+    "videos": [
+        {
+            "filename": "001_yangi_hamyon_ochish.mkv",
+            "title": "Yangi Hamyon Ochish / Create New Vault",
+            "video_specific_description": "Obsidian’da yangi hamyon (vault) yaratish jarayoni: papka tanlash va dasturni ishga tushirish.",
+            "video_specific_tags": [
+                "YangiHamyon/NewVault",
+                "Boshlash/GettingStarted"
+            ]
+        },
+        {
+            "filename": "002_ozbek_tiliga_sozlash.mkv",
+            "title": "O‘zbek Tiliga Sozlash / Switch to Uzbek",
+            "video_specific_description": "Obsidian interfeysini o‘zbek tiliga o‘tkazish: sozlamalar → appearance → language.",
+            "video_specific_tags": [
+                "TilSozlamalari/LanguageSettings",
+                "OzbekUI/UzbekUI"
+            ]
+        },
+        {
+            "filename": "003_yangi_eslatma_yaratish.mkv",
+            "title": "Yangi Eslatma Yaratish / Create New Note",
+            "video_specific_description": "Yangi markdown fayl yaratish: Ctrl+N yoki sidebar → new note.",
+            "video_specific_tags": [
+                "YangiEslatma/NewNote",
+                "MarkdownFayl/MarkdownFile"
+            ]
+        },
+        {
+            "filename": "004_sarvlavhalar.mkv",
+            "title": "Sarlavhalar / Headings",
+            "video_specific_description": "#, ##, ### bilan sarlavha darajalarini yaratish va ko‘rinishi.",
+            "video_specific_tags": [
+                "Sarlavha/Heading",
+                "H1H2H3/H1H2H3"
+            ]
+        },
+        {
+            "filename": "005_qalin_matn.mkv",
+            "title": "Qalin Matn / Bold Text",
+            "video_specific_description": "**matn** yoki Ctrl+B bilan qalin formatlash.",
+            "video_specific_tags": [
+                "QalinMatn/Bold",
+                "Formatlash/Formatting"
+            ]
+        },
+        {
+            "filename": "006_qiya_matn.mkv",
+            "title": "Qiya Matn / Italic Text",
+            "video_specific_description": "*matn* yoki Ctrl+I bilan qiya formatlash.",
+            "video_specific_tags": [
+                "QiyaMatn/Italic",
+                "Formatlash/Formatting"
+            ]
+        },
+        {
+            "filename": "007_ustiga_chizilgan_matn.mkv",
+            "title": "Üstiga Chizilgan Matn / Strikethrough",
+            "video_specific_description": "~~matn~~ bilan ustiga chizish.",
+            "video_specific_tags": [
+                "UstigaChizish/Strikethrough",
+                "Formatlash/Formatting"
+            ]
+        },
+        {
+            "filename": "008_belgilangan_matn.mkv",
+            "title": "Belgilangan Matn / Highlight",
+            "video_specific_description": "==matn== bilan matnni belgilash.",
+            "video_specific_tags": [
+                "Belgilash/Highlight",
+                "Formatlash/Formatting"
+            ]
+        },
+        {
+            "filename": "009_matn_formatlash_oson_usuli.mkv",
+            "title": "Matn Formatlashning Oson Usuli / Quick Formatting",
+            "video_specific_description": "Toolbar tugmalari orqali tez formatlash (bold, italic, list).",
+            "video_specific_tags": [
+                "Toolbar/Toolbar",
+                "TezFormat/QuickFormat"
+            ]
+        },
+        {
+            "filename": "010_gorizontal_chiziq.mkv",
+            "title": "Gorizontal Chiziq / Horizontal Rule",
+            "video_specific_description": "--- yoki *** bilan bo‘luvchi chiziq qo‘yish.",
+            "video_specific_tags": [
+                "GorizontalChiziq/HorizontalRule",
+                "BoLuvchi/Divider"
+            ]
+        },
+        {
+            "filename": "011_blokli_iqtibos.mkv",
+            "title": "Blokli Iqtibos / Block Quote",
+            "video_specific_description": "> bilan blok iqtibos yaratish, ichma-ich joylash.",
+            "video_specific_tags": [
+                "Iqtibos/Quote",
+                "BlokQuote/BlockQuote"
+            ]
+        },
+        {
+            "filename": "012_tartiblanMagan_royxat.mkv",
+            "title": "Tartiblanmagan Ro‘yxat / Unordered List",
+            "video_specific_description": "-, * yoki + bilan bullet ro‘yxat yaratish.",
+            "video_specific_tags": [
+                "Tartiblanmagan/UnorderedList",
+                "BulletList/BulletList"
+            ]
+        },
+        {
+            "filename": "013_tartiblangan_royxat.mkv",
+            "title": "Tartiblangan Ro‘yxat / Ordered List",
+            "video_specific_description": "1. 2. bilan raqamli ro‘yxat yaratish.",
+            "video_specific_tags": [
+                "Tartiblangan/OrderedList",
+                "RaqamliList/NumberedList"
+            ]
+        },
+        {
+            "filename": "014_royxat_elementlari_sathini_ozgartirish.mkv",
+            "title": "Ro‘yxat Sathini O‘zgartirish / Indent List Items",
+            "video_specific_description": "Tab yoki Ctrl+] bilan ro‘yxat elementini ichkariga surish.",
+            "video_specific_tags": [
+                "SathOzgartirish/Indent",
+                "IchmaIchList/NestedList"
+            ]
+        },
+        {
+            "filename": "015_checkbox_lar.mkv",
+            "title": "Checkbox’lar / Task Checkboxes",
+            "video_specific_description": "- [ ] va - [x] bilan vazifa belgilash.",
+            "video_specific_tags": [
+                "Checkbox/Task",
+                "VazifaList/TodoList"
+            ]
+        },
+        {
+            "filename": "016_tashqi_linklar.mkv",
+            "title": "Tashqi Linklar / External Links",
+            "video_specific_description": "[matn](https://url) sintaksisi bilan tashqi havola qo‘yish.",
+            "video_specific_tags": [
+                "TashqiLink/ExternalLink",
+                "Havola/Hyperlink"
+            ]
+        },
+        {
+            "filename": "017_ichki_linklar_oddiy_link.mkv",
+            "title": "Ichki Linklar: Oddiy / Internal Links Simple",
+            "video_specific_description": "[[eslatma nomi]] bilan oddiy ichki link yaratish.",
+            "video_specific_tags": [
+                "IchkiLink/InternalLink",
+                "WikiLink/WikiLink"
+            ]
+        },
+        {
+            "filename": "018_ichki_linklar_nomlangan_link.mkv",
+            "title": "Ichki Linklar: Nomlangan / Internal Links Aliased",
+            "video_specific_description": "[[eslatma|ko‘rinadigan matn]] bilan nomlangan link.",
+            "video_specific_tags": [
+                "NomlanganLink/AliasedLink",
+                "IchkiLink/InternalLink"
+            ]
+        },
+        {
+            "filename": "019_ichki_linklar_sarvlavha_linklari.mkv",
+            "title": "Ichki Linklar: Sarlavhaga / Link to Heading",
+            "video_specific_description": "[[eslatma#sarlavha]] bilan sarlavhaga to‘g‘ridan link.",
+            "video_specific_tags": [
+                "SarlavhaLink/HeadingLink",
+                "IchkiLink/InternalLink"
+            ]
+        },
+        {
+            "filename": "020_eslatmalarni_biriktirish.mkv",
+            "title": "Eslatmalarni Biriktirish / Embed Notes",
+            "video_specific_description": "![[eslatma]] bilan boshqa eslatmani ichiga joylashtirish.",
+            "video_specific_tags": [
+                "Biriktirish/Embed",
+                "Transclusion/Transclusion"
+            ]
+        },
+        {
+            "filename": "021_kod_bloklari.mkv",
+            "title": "Kod Bloklari / Code Blocks",
+            "video_specific_description": "``` bilan kod blok ochish, til belgilash (```js).",
+            "video_specific_tags": [
+                "KodBlok/CodeBlock",
+                "SyntaxHighlight/SyntaxHighlight"
+            ]
+        },
+        {
+            "filename": "022_jadvallar.mkv",
+            "title": "Jadvallar / Tables",
+            "video_specific_description": "| ustun | ustun | va --- bilan markdown jadval yaratish.",
+            "video_specific_tags": [
+                "Jadval/Table",
+                "MarkdownTable/MarkdownTable"
+            ]
+        },
+        {
+            "filename": "023_medialar_resurslarni_tayyorlash.mkv",
+            "title": "Medialar: Resurs Tayyorlash / Prepare Assets",
+            "video_specific_description": "Rasm, video, pdf’larni hamyon ichidagi ‘assets’ papkasiga joylash.",
+            "video_specific_tags": [
+                "ResursTayyorlash/AssetFolder",
+                "Medialar/Media"
+            ]
+        },
+        {
+            "filename": "024_medialar_musiqa_biriktirish.mkv",
+            "title": "Medialar: Musiqa Biriktirish / Embed Audio",
+            "video_specific_description": "![[audio.mp3]] yoki <audio> tegi bilan musiqa qo‘yish.",
+            "video_specific_tags": [
+                "Musiqa/Audio",
+                "Biriktirish/Embed"
+            ]
+        },
+        {
+            "filename": "025_medialar_video_biriktirish.mkv",
+            "title": "Medialar: Video Biriktirish / Embed Video",
+            "video_specific_description": "![[video.mp4]] bilan lokal video ko‘rsatish.",
+            "video_specific_tags": [
+                "Video/Video",
+                "Biriktirish/Embed"
+            ]
+        },
+        {
+            "filename": "026_medialar_pdf_biriktirish.mkv",
+            "title": "Medialar: PDF Biriktirish / Embed PDF",
+            "video_specific_description": "![[doc.pdf]] bilan PDFni eslatma ichida ko‘rsatish.",
+            "video_specific_tags": [
+                "PDF/PDF",
+                "Biriktirish/Embed"
+            ]
+        },
+        {
+            "filename": "027_medialar_rasm_biriktirish.mkv",
+            "title": "Medialar: Rasm Biriktirish / Embed Image",
+            "video_specific_description": "![[image.png]] yoki ![alt](image.png) bilan rasm qo‘yish.",
+            "video_specific_tags": [
+                "Rasm/Image",
+                "Biriktirish/Embed"
+            ]
+        },
+        {
+            "filename": "028_medialar_xarita_biriktirish.mkv",
+            "title": "Medialar: Xarita Biriktirish / Embed Map",
+            "video_specific_description": "Leaflet yoki oddiy HTML iframe bilan interaktiv xarita.",
+            "video_specific_tags": [
+                "Xarita/Map",
+                "HTMLiframe/Iframe"
+            ]
+        },
+        {
+            "filename": "029_konvertlar.mkv",
+            "title": "Konvertlar / Callouts",
+            "video_specific_description": "> [!note] yoki [!warning] bilan rangli konvert bloklar.",
+            "video_specific_tags": [
+                "Konvert/Callout",
+                "Admonition/Admonition"
+            ]
+        },
+        {
+            "filename": "031_mermaid_diagrammalar.mkv",
+            "title": "Mermaid Diagrammalar / Mermaid Diagrams",
+            "video_specific_description": "```mermaid graph TD;``` bilan oqim diagrammalari yaratish.",
+            "video_specific_tags": [
+                "Mermaid/Mermaid",
+                "Diagrammalar/Diagrams"
+            ]
+        },
+        {
+            "filename": "032_matematik_ifodalar_LaTeX_formati.mkv",
+            "title": "Matematik Ifodalar LaTeX / LaTeX Math",
+            "video_specific_description": "$$E=mc^2$$ yoki $x_i$ bilan matematik formulalar yozish.",
+            "video_specific_tags": [
+                "LaTeX/LaTeX",
+                "Matematika/Math"
+            ]
+        }
+    ]
+}
