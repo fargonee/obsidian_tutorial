@@ -23,7 +23,7 @@ FarGoneE — bu nafaqat Obsidian darslari. Bu Engineering, Automation, Electroni
 Subscribe qiling va birga Farg‘oniy ruhida yangi cho‘qqilarni zabt etaylik!
 
 Telegram / Instagram / Facebook: @fargoneengineering  
-Qo‘shimcha materiallar (effektsiz video + doc): fargonee.github.io/education/obsidian_tutorial
+Qo‘shimcha materiallar (effektsiz video + doc): https://fargonee.github.io/education/obsidian_tutorial
 
 ---
 
@@ -52,6 +52,6 @@ FarGoneE is not only Obsidian. It’s Engineering, Automation, Electronics, Prog
 Subscribe now and let’s conquer new peaks together in true Fergani spirit!
 
 Telegram / Instagram / Facebook: @fargoneengineering  
-Extra materials (no-effect videos + docs): fargonee.github.io/education/obsidian_tutorial
+Extra materials (no-effect videos + docs): https://fargonee.github.io/education/obsidian_tutorial
 
 #ObsidianUzbek #FarGoneE #FargoniyEngineering #Automation #KnowledgeBase
