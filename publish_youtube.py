@@ -10,3 +10,4 @@ def publish_youtube():
 
 if __name__ == "__main__":
     publish_youtube()
+    track_meta_updates()
