@@ -22,7 +22,7 @@ def upload_new_videos() -> None:
     video_ids_path = root / "resources" / "video_ids.json"
 
     # Load with order preserved (critical!)
-    videos_meta = load_or_create_json(root / "resources" / "videos_meta.json", preserve_order=True)
+    videos_meta = load_or_create_json(root / "resources" / "videos_meta.json")
     video_ids = load_or_create_json(
         video_ids_path,
         default={fp: None for fp in videos_meta.keys()},

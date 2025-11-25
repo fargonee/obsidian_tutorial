@@ -5,7 +5,7 @@ from scripts.studio.diversify_intro import diversify_intro
 from scripts.studio.add_music_to_videos import add_music_to_all_videos
 from scripts.studio.merge_intros_to_videos import merge_intros_to_videos
 
-FORCE_REWRITE = True
+FORCE_REWRITE = False
 
 def main():
     ensure_videos_fingerprinted()
