@@ -101,6 +101,7 @@ def upload_new_videos() -> None:
             except HttpError as e:
                 if is_quota_exceeded_error(e) is True:
                     log.red.bold("DAILY QUOTA LIMIT EXCEETED, We'll come back tomorrow")
+                    continue
                 else:
                     log.red.bold("FAILED TO ADD TO PLAYLIST → STOPPING")
                     log.red(f"Video: https://youtu.be/{youtube_id}")
@@ -116,13 +117,16 @@ def upload_new_videos() -> None:
         log.cyan(f"Playlist → https://www.youtube.com/playlist?list={PLAYLIST_ID}")
 
     except Exception as e:
-        # Critical: save progress before exiting
-        log.red.bold("UPLOAD SEQUENCE STOPPED DUE TO ERROR")
-        log.red.bold(str(e))
-        log.red("Preserving tutorial order — fix issue and rerun.")
+        if is_quota_exceeded_error(e) is True:
+            log.red.bold("DAILY QUOTA LIMIT EXCEETED, We'll come back tomorrow")
+        else:
+            # Critical: save progress before exiting
+            log.red.bold("UPLOAD SEQUENCE STOPPED DUE TO ERROR")
+            log.red.bold(str(e))
+            log.red("Preserving tutorial order — fix issue and rerun.")
 
-        with open(video_ids_path, "w", encoding="utf-8") as f:
-            json.dump(video_ids, f, indent=4, ensure_ascii=False)
+            with open(video_ids_path, "w", encoding="utf-8") as f:
+                json.dump(video_ids, f, indent=4, ensure_ascii=False)
 
-        log.yellow("Progress saved. Next run will continue from the next video.")
-        sys.exit(1)
+            log.yellow("Progress saved. Next run will continue from the next video.")
+            sys.exit(1)
