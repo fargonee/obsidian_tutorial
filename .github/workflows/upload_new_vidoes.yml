@@ -3,8 +3,10 @@ permissions:
   contents: write
 
 on:
-  schedule:
-    - cron: "0 1 * * *"   # 06:00 Asia/Tashkent
+  workflow_run:
+    workflows: ["Daily Metadata Sync"]   # must match metadata workflow name exactly
+    types:
+      - completed
   workflow_dispatch:
 
 jobs:
