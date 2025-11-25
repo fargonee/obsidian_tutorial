@@ -98,10 +98,17 @@ def upload_new_videos() -> None:
                 log.cyan.bold("Added to playlist")
 
             except HttpError as e:
-                log.red.bold("FAILED TO ADD TO PLAYLIST → STOPPING")
-                log.red(f"Video: https://youtu.be/{youtube_id}")
-                log.red(f"Error: {e}")
-                raise
+                if e.resp.status == 403 and "quotaExceeded" in str(e):
+                    log.grey("Quota exhausted – stopping quietly.")
+                    return False       # stop current run
+                elif e.resp.status == 403 and "rateLimitExceeded" in str(e):
+                    log.grey("Rate limit hit – backing off quietly.")
+                    return  
+                else:
+                    log.red.bold("FAILED TO ADD TO PLAYLIST → STOPPING")
+                    log.red(f"Video: https://youtu.be/{youtube_id}")
+                    log.red(f"Error: {e}")
+                    raise
 
         # === All good → save progress ===
         video_ids_path.parent.mkdir(parents=True, exist_ok=True)
