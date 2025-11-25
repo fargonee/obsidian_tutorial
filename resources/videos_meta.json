@@ -77,7 +77,7 @@
             "sarlavhalar obsidian",
             "obsidian headings",
             "markdown sarlavha uzbek",
-            "# h1 h2 h3",
+            "h1 h2 h3",
             "obsidian formatlash",
             "obsidian darslari uzbek",
             "fargonee",
@@ -94,7 +94,6 @@
         "tags": [
             "qalin matn obsidian",
             "obsidian bold",
-            "**qalin matn**",
             "markdown bold uzbek",
             "obsidian formatlash",
             "obsidian uzbek",
@@ -111,7 +110,6 @@
         "tags": [
             "qiya matn obsidian",
             "obsidian italic",
-            "*qiya matn*",
             "markdown italic uzbek",
             "obsidian formatlash",
             "fargonee",
@@ -127,7 +125,6 @@
         "tags": [
             "ustiga chizish obsidian",
             "obsidian strikethrough",
-            "~~ustiga chizish~~",
             "markdown strikethrough uzbek",
             "fargonee",
             "obsidian formatlash"
@@ -142,7 +139,6 @@
         "tags": [
             "belgilangan matn obsidian",
             "obsidian highlight",
-            "==highlight==",
             "obsidian mark",
             "markdown highlight uzbek",
             "fargonee"
@@ -172,7 +168,6 @@
         "tags": [
             "gorizontal chiziq obsidian",
             "horizontal rule markdown",
-            "--- divider",
             "obsidian bo'luvchi",
             "fargonee",
             "markdown uzbek"
@@ -187,7 +182,7 @@
         "tags": [
             "blok iqtibos obsidian",
             "block quote markdown",
-            "> iqtibos uzbek",
+            " iqtibos uzbek",
             "obsidian quote",
             "fargonee"
         ]
@@ -216,7 +211,6 @@
             "tartiblangan ro'yxat",
             "numbered list obsidian",
             "ordered list uzbek",
-            "obsidian 1.2.3",
             "fargonee"
         ]
     },
@@ -225,7 +219,7 @@
         "title": "014 Ro'yxat Sathini O'zgartirish | Indent and Outdent Lists | FarGoneE Obsidian",
         "label": "014. Ro'yxat elementlari sathini o'zgartirish",
         "filename": "014_royxat_elementlari_sathini_ozgartirish",
-        "description": "Ro‘yxat Sath O‘zgartir: Tab Ichma! 🪜\nIchma-ich ro‘yxatlar – tartibni oson boshqaring\nFarGoneE-Education – Farg‘oniy Engineering ruhida o‘zbek tilida ilm\nTelegram/YouTube/Instagram: @fargoneengineering\n\n014 Indent List: Tab Nest! 🪜\nNested lists made easy\nFarGoneE – Excellence from Fergana Valley\n@fargoneengineering",
+        "description": "Ro‘yxat Sath O‘zgartir: Tab Sathlar! 🪜\nIchma-ich ro‘yxatlar – tartibni oson boshqaring\nFarGoneE-Education – Farg‘oniy Engineering ruhida o‘zbek tilida ilm\nTelegram/YouTube/Instagram: @fargoneengineering\n\n014 Indent List: Tab Nest! 🪜\nNested lists made easy\nFarGoneE – Excellence from Fergana Valley\n@fargoneengineering",
         "tags": [
             "ro'yxat sathi obsidian",
             "nested list uzbek",
@@ -243,7 +237,6 @@
         "tags": [
             "checkbox obsidian",
             "task list uzbek",
-            "- [x] vazifa",
             "obsidian todo",
             "obsidian tasks uzbek",
             "fargonee"
@@ -258,7 +251,6 @@
         "tags": [
             "tashqi link obsidian",
             "external link uzbek",
-            "[matn](url)",
             "hyperlink obsidian",
             "fargonee"
         ]
@@ -271,7 +263,6 @@
         "description": "Ichki Link Oddiy: [[Zudlik Bilan]]! ⚡\nEslatmalar o‘rtasida teleport!\nFarGoneE-Education – Farg‘oniy Engineering ruhida o‘zbek tilida ilm\nTelegram/YouTube/Instagram: @fargoneengineering\n\n017 Simple Internal Link: [[Teleport]]! ⚡\nJump between notes instantly\nFarGoneE – Excellence from Fergana Valley\n@fargoneengineering",
         "tags": [
             "ichki link obsidian",
-            "[[eslatma]] uzbek",
             "wikilink obsidian",
             "internal link uzbek",
             "fargonee"
@@ -286,7 +277,6 @@
         "tags": [
             "nomlangan link obsidian",
             "aliased link uzbek",
-            "[[eslatma|matn]]",
             "obsidian link nomlash",
             "fargonee"
         ]
@@ -300,7 +290,7 @@
         "tags": [
             "sarlavhaga link obsidian",
             "heading link uzbek",
-            "[[#sarlavha]]",
+            "sarlavha",
             "obsidian anchor",
             "fargonee"
         ]
@@ -314,7 +304,7 @@
         "tags": [
             "eslatma biriktirish",
             "embed note obsidian",
-            "![[eslatma]] uzbek",
+            "eslatma uzbek",
             "transclusion obsidian",
             "fargonee"
         ]
@@ -328,7 +318,6 @@
         "tags": [
             "kod blok obsidian",
             "code block uzbek",
-            "```kod```",
             "syntax highlight obsidian",
             "fargonee"
         ]
@@ -436,7 +425,6 @@
         "tags": [
             "konvert obsidian",
             "callouts uzbek",
-            "[!note] obsidian",
             "admonition obsidian",
             "fargonee"
         ]
@@ -451,7 +439,6 @@
             "mermaid obsidian",
             "mermaid diagrammalar uzbek",
             "flowchart obsidian",
-            "```mermaid``` uzbek",
             "obsidian diagram",
             "fargonee"
         ]
@@ -465,7 +452,7 @@
         "tags": [
             "latex obsidian",
             "matematik formula uzbek",
-            "$$E=mc^2$$ obsidian",
+            "LaTeX obsidian",
             "obsidian math",
             "latex uzbek dars",
             "fargonee"
