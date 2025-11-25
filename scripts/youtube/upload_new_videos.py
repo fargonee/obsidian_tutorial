@@ -25,8 +25,7 @@ def upload_new_videos() -> None:
     videos_meta = load_or_create_json(root / "resources" / "videos_meta.json")
     video_ids = load_or_create_json(
         video_ids_path,
-        default={fp: None for fp in videos_meta.keys()},
-        preserve_order=True
+        default={fp: None for fp in videos_meta.keys()}
     )
 
     youtube = get_authenticated_service()
