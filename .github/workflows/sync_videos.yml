@@ -1,5 +1,7 @@
 # .github/workflows/sync_videos.yml
 name: Daily Video Sync & Metadata Update
+permissions:
+  contents: write
 
 # Run every day at 06:00 AM Uzbekistan time (Asia/Tashkent → UTC+5)
 on:
@@ -70,3 +72,20 @@ jobs:
       - name: Summary
         run: |
           echo "Daily sync completed at $(date) Asia/Tashkent"
+      # ---------------------------------------------------------
+      # 3. Update repository files
+      # ---------------------------------------------------------
+      - name: Commit and push changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+      
+          git add .
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+            exit 0
+          fi
+      
+          git commit -m "Auto-update JSON metadata [skip ci]"
+          git push
+      
