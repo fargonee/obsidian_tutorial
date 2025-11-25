@@ -7,7 +7,7 @@ from utils.logger import log
 from scripts.youtube.auth import get_authenticated_service
 from utils.get_json import load_or_create_json
 from utils.constants import PLAYLIST_ID
-
+from utils.quota_limit_checker import is_quota_exceeded_error
 
 
 def update_youtube_metadata(key_64: str, new_meta: Dict[str, Any]) -> None:
@@ -20,12 +20,12 @@ def update_youtube_metadata(key_64: str, new_meta: Dict[str, Any]) -> None:
 
     youtube_id = video_ids.get(key_64)
     if not youtube_id:
-        log.yellow(f"[SKIP] No YouTube ID for {key_64[:10]}… (not uploaded)")
+        log.yellow(f"[SKIP] No YouTube ID for {key_64[:10]}… (not uploaded yet)")
         return
 
     youtube = get_authenticated_service()
 
-    # === 1. Update metadata (title, description, tags, etc.) ===
+    # Prepare snippet
     snippet = {
         "title": new_meta["title"],
         "description": new_meta["description"],
@@ -43,22 +43,20 @@ def update_youtube_metadata(key_64: str, new_meta: Dict[str, Any]) -> None:
             body={"id": youtube_id, "snippet": snippet}
         ).execute()
 
-        log.green.bold("Metadata updated on YouTube")
+        log.green.bold("Metadata updated successfully")
 
-        # === 2. Ensure video is in the playlist (idempotent) ===
+        # === Ensure video is in the playlist (idempotent) ===
         try:
-            # Check if already in playlist
             response = youtube.playlistItems().list(
-                part="snippet",
+                part="contentDetails,snippet",
                 playlistId=PLAYLIST_ID,
                 videoId=youtube_id,
                 maxResults=1
             ).execute()
 
-            if response["items"]:
+            if response.get("items"):
                 log.cyan("Already in playlist")
             else:
-                # Add it (at the end — order is controlled by videos_meta.json order during upload)
                 youtube.playlistItems().insert(
                     part="snippet",
                     body={
@@ -71,30 +69,47 @@ def update_youtube_metadata(key_64: str, new_meta: Dict[str, Any]) -> None:
                         }
                     }
                 ).execute()
-                log.cyan.bold("RE-ADDED TO PLAYLIST")
+                log.cyan.bold("Added back to playlist")
                 log.cyan(f"   → https://www.youtube.com/playlist?list={PLAYLIST_ID}")
 
-        except HttpError as e:
-            log.red.bold("FAILED to add/check playlist")
-            log.red(f"   Error: {e}")
+        except HttpError as playlist_err:
+            if is_quota_exceeded_error(playlist_err):
+                log.red.bold("DAILY QUOTA EXCEEDED – stopping further API calls for today")
+                return  # Silent exit for the rest of this run
+            else:
+                log.red.bold("Failed to manage playlist membership")
+                log.red(f"   Error: {playlist_err}")
+                # Non-quota playlist errors are rare but not fatal — continue
 
     except HttpError as e:
-        error = e.error_details[0] if e.error_details else {}
-        reason = error.get("reason", "unknown")
+        if is_quota_exceeded_error(e):
+            log.red.bold("DAILY QUOTA EXCEEDED – metadata update skipped for this video")
+            log.red("   We'll resume tomorrow when quota resets.")
+            return  # Graceful early exit — no traceback, no noise
+
+        # Any other HTTP error → loud
+        try:
+            details = e.error_details[0] if hasattr(e, "error_details") and e.error_details else {}
+            reason = details.get("reason", "unknown")
+        except Exception:
+            reason = "unknown"
 
         log.red.bold("METADATA UPDATE FAILED")
         log.red(f"   Video: https://youtu.be/{youtube_id}")
         log.red(f"   Reason: {reason}")
+        log.red(f"   Full error: {e}")
 
-        if reason in ("videoNotFound", "forbidden"):
-            log.yellow("Video deleted or access revoked. Keeping local record.")
+        if reason in ("videoNotFound", "forbidden", "videoDeleted"):
+            log.yellow("Video no longer exists on YouTube. Keeping local record for now.")
 
     except Exception as e:
-        log.red.bold("FATAL ERROR in metadata update")
+        # Truly unexpected → loud and let scheduler see the failure
+        log.red.bold("FATAL UNEXPECTED ERROR in metadata update")
+        log.red(f"   Video ID: {youtube_id}")
         log.red(f"   Error: {e}")
-        raise
+        raise  # Re-raise so cron/scheduler knows something went wrong
 
 
-# Public hook (used by track_meta_updates.py)
+# Public hook
 def update_meta(key_64: str, meta_dict: Dict[str, Any]) -> None:
     update_youtube_metadata(key_64, meta_dict)

@@ -4,6 +4,7 @@ import sys
 from googleapiclient.http import MediaFileUpload
 from googleapiclient.errors import HttpError
 
+from utils.quota_limit_checker import is_quota_exceeded_error
 from utils.root import root
 from scripts.youtube.auth import get_authenticated_service
 from utils.get_json import load_or_create_json
@@ -98,12 +99,8 @@ def upload_new_videos() -> None:
                 log.cyan.bold("Added to playlist")
 
             except HttpError as e:
-                if e.resp.status == 403 and "quotaExceeded" in str(e):
-                    log.grey("Quota exhausted – stopping quietly.")
-                    return False       # stop current run
-                elif e.resp.status == 403 and "rateLimitExceeded" in str(e):
-                    log.grey("Rate limit hit – backing off quietly.")
-                    return  
+                if is_quota_exceeded_error(e) is True:
+                    log.red.bold("DAILY QUOTA LIMIT EXCEETED, We'll come back tomorrow")
                 else:
                     log.red.bold("FAILED TO ADD TO PLAYLIST → STOPPING")
                     log.red(f"Video: https://youtu.be/{youtube_id}")
