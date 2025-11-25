@@ -114,6 +114,7 @@ def upload_new_videos() -> None:
     except Exception as e:
         # Critical: save progress before exiting
         log.red.bold("UPLOAD SEQUENCE STOPPED DUE TO ERROR")
+        log.red.bold(str(e))
         log.red("Preserving tutorial order — fix issue and rerun.")
 
         with open(video_ids_path, "w", encoding="utf-8") as f:

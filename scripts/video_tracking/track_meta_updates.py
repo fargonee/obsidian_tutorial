@@ -1,5 +1,6 @@
 import json
 from typing import Any, Dict
+from utils.phase_logger import phase
 
 from utils.root import root
 from utils.meta_fingerprinter import fingerprint_meta
@@ -12,7 +13,7 @@ videos_meta_path        = root / "resources" / "videos_meta.json"      # <-- typ
 meta_fingerprints_path  = root / "resources" / "meta_fingerprints.json" # 64-char key → 8-char fp
 
 
-
+@phase("UPDATE YOUTUBE METADATA + ENSURE IN PLAYLIST")
 def track_meta_updates() -> None:
     """
     1. Load ``videos_meta.json``  →  { <64-char-key>: <meta-dict>, … }

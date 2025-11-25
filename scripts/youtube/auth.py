@@ -9,7 +9,10 @@ import pickle
 
 def get_authenticated_service():
     CLIENT_SECRETS_FILE = 'youtube_client_secrets.json'  # Your secrets file
-    SCOPES = ['https://www.googleapis.com/auth/youtube.upload']
+    SCOPES = [
+        "https://www.googleapis.com/auth/youtube",
+        "https://www.googleapis.com/auth/youtube.upload"
+    ]
     API_SERVICE_NAME = 'youtube'
     API_VERSION = 'v3'
 

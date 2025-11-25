@@ -3,7 +3,6 @@ from typing import Dict, Any
 
 from googleapiclient.errors import HttpError
 from utils.root import root
-from utils.phase_logger import phase
 from utils.logger import log
 from scripts.youtube.auth import get_authenticated_service
 from utils.get_json import load_or_create_json
@@ -11,7 +10,6 @@ from utils.constants import PLAYLIST_ID
 
 
 
-@phase("UPDATE YOUTUBE METADATA + ENSURE IN PLAYLIST")
 def update_youtube_metadata(key_64: str, new_meta: Dict[str, Any]) -> None:
     """
     Updates YouTube video metadata AND ensures the video exists in the main playlist.
@@ -37,8 +35,8 @@ def update_youtube_metadata(key_64: str, new_meta: Dict[str, Any]) -> None:
 
     try:
         log.blue.bold(f"Updating metadata → https://youtu.be/{youtube_id}")
-        log.gray(f"   Fingerprint: {key_64}")
-        log.gray(f"   Title: {snippet['title'][:70]}...")
+        log.grey(f"   Fingerprint: {key_64}")
+        log.grey(f"   Title: {snippet['title'][:70]}...")
 
         youtube.videos().update(
             part="snippet",

@@ -4,7 +4,7 @@ from scripts.video_tracking.track_meta_updates import track_meta_updates
 
 
 def publish_youtube():
-    upload_new_videos()
+    # upload_new_videos()
     track_meta_updates()
 
 
