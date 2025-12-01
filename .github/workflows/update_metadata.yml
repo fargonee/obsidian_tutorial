@@ -34,9 +34,6 @@ jobs:
           CLIENT_SECRETS_JSON: ${{ secrets.CLIENT_SECRETS_JSON }}
           YOUTUBE_REFRESH_TOKEN: ${{ secrets.YOUTUBE_REFRESH_TOKEN }}
         run: |
-          echo "$CLIENT_SECRETS_JSON" > client_secrets.json
-          echo "$YOUTUBE_REFRESH_TOKEN" | base64 -d > token.pickle
-
           python -c "
           from scripts.video_tracking.track_meta_updates import track_meta_updates
           track_meta_updates()
