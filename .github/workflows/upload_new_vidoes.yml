@@ -34,10 +34,10 @@ jobs:
       - name: Upload new videos to YouTube
         env:
           CLIENT_SECRETS_JSON: ${{ secrets.CLIENT_SECRETS_JSON }}
-          TOKEN_PICKLE_BASE64: ${{ secrets.TOKEN_PICKLE_BASE64 }}
+          YOUTUBE_REFRESH_TOKEN: ${{ secrets.YOUTUBE_REFRESH_TOKEN }}
         run: |
           echo "$CLIENT_SECRETS_JSON" > client_secrets.json
-          echo "$TOKEN_PICKLE_BASE64" | base64 -d > token.pickle
+          echo "$YOUTUBE_REFRESH_TOKEN" | base64 -d > token.pickle
 
           python -c "
           from scripts.youtube.upload_new_videos import upload_new_videos

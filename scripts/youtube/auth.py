@@ -1,33 +1,53 @@
-from googleapiclient.discovery import build
-from google_auth_oauthlib.flow import InstalledAppFlow
-from google.auth.transport.requests import Request
+# scripts/youtube/auth.py  (or wherever you keep it)
 import os
-import pickle
-
-
-
+from google.oauth2.credentials import Credentials
+from google_auth_oauthlib.flow import InstalledAppFlow
+from googleapiclient.discovery import build
+from google.auth.transport.requests import Request
 
 def get_authenticated_service():
-    CLIENT_SECRETS_FILE = 'youtube_client_secrets.json'  # Your secrets file
-    SCOPES = [
-        "https://www.googleapis.com/auth/youtube",
-        "https://www.googleapis.com/auth/youtube.upload"
-    ]
-    API_SERVICE_NAME = 'youtube'
-    API_VERSION = 'v3'
+    """
+    Returns an authenticated YouTube Data API v3 service.
+    Works perfectly in GitHub Actions with two secrets:
+      • CLIENT_SECRETS_JSON  → base64-encoded client_secrets.json
+      • YOUTUBE_REFRESH_TOKEN → raw refresh token string (1//04...)
+    """
+    # 1. Write the base64 client secrets to a temporary file
+    client_secrets_b64 = os.getenv("CLIENT_SECRETS_JSON")
+    if not client_secrets_b64:
+        raise RuntimeError("Missing CLIENT_SECRETS_JSON secret")
 
-    creds = None
-    if os.path.exists('token.pickle'):
-        with open('token.pickle', 'rb') as token:
-            creds = pickle.load(token)
+    import base64, tempfile
+    with tempfile.NamedTemporaryFile(mode="w", suffix=".json", delete=False) as f:
+        f.write(base64.b64decode(client_secrets_b64).decode())
+        client_secrets_path = f.name
 
-    if not creds or not creds.valid:
-        if creds and creds.expired and creds.refresh_token:
-            creds.refresh(Request())
-        else:
-            flow = InstalledAppFlow.from_client_secrets_file(CLIENT_SECRETS_FILE, SCOPES)
-            creds = flow.run_local_server(port=0)
-        with open('token.pickle', 'wb') as token:
-            pickle.dump(creds, token)
+    # 2. Get the raw refresh token from secret
+    refresh_token = os.getenv("YOUTUBE_REFRESH_TOKEN")
+    if not refresh_token:
+        raise RuntimeError("Missing YOUTUBE_REFRESH_TOKEN secret")
 
-    return build(API_SERVICE_NAME, API_VERSION, credentials=creds)
+    # 3. Build credentials from refresh token (stateless – no pickle needed)
+    flow = InstalledAppFlow.from_client_secrets_file(
+        client_secrets_path,
+        scopes=["https://www.googleapis.com/auth/youtube.force-ssl"]   # broadest scope → fixes playlist error
+    )
+
+    creds = Credentials(
+        token=None,                     # we don’t have a short-lived access token yet
+        refresh_token=refresh_token,
+        client_id=flow.client_config["client_id"],
+        client_secret=flow.client_config["client_secret"],
+        token_uri="https://oauth2.googleapis.com/token",
+        scopes=flow.scopes
+    )
+
+    # Force refresh to get a valid access token
+    if not creds.valid:
+        creds.refresh(Request())
+
+    # Clean up the temporary file
+    os.unlink(client_secrets_path)
+
+    # Return the YouTube service
+    return build("youtube", "v3", credentials=creds)

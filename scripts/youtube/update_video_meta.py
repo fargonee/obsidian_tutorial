@@ -1,4 +1,3 @@
-# scripts/youtube/update_meta.py
 from typing import Dict, Any
 
 from googleapiclient.errors import HttpError

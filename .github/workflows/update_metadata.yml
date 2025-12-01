@@ -32,10 +32,10 @@ jobs:
       - name: Update metadata on YouTube
         env:
           CLIENT_SECRETS_JSON: ${{ secrets.CLIENT_SECRETS_JSON }}
-          TOKEN_PICKLE_BASE64: ${{ secrets.TOKEN_PICKLE_BASE64 }}
+          YOUTUBE_REFRESH_TOKEN: ${{ secrets.YOUTUBE_REFRESH_TOKEN }}
         run: |
           echo "$CLIENT_SECRETS_JSON" > client_secrets.json
-          echo "$TOKEN_PICKLE_BASE64" | base64 -d > token.pickle
+          echo "$YOUTUBE_REFRESH_TOKEN" | base64 -d > token.pickle
 
           python -c "
           from scripts.video_tracking.track_meta_updates import track_meta_updates
