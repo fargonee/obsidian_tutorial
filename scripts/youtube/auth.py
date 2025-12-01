@@ -1,9 +1,11 @@
-# scripts/youtube/auth.py  (or wherever you keep it)
+# scripts/youtube/auth.py
 import os
 from google.oauth2.credentials import Credentials
 from google_auth_oauthlib.flow import InstalledAppFlow
 from googleapiclient.discovery import build
 from google.auth.transport.requests import Request
+import base64
+import tempfile
 
 def get_authenticated_service():
     """
@@ -17,7 +19,6 @@ def get_authenticated_service():
     if not client_secrets_b64:
         raise RuntimeError("Missing CLIENT_SECRETS_JSON secret")
 
-    import base64, tempfile
     with tempfile.NamedTemporaryFile(mode="w", suffix=".json", delete=False) as f:
         f.write(base64.b64decode(client_secrets_b64).decode())
         client_secrets_path = f.name
@@ -27,19 +28,22 @@ def get_authenticated_service():
     if not refresh_token:
         raise RuntimeError("Missing YOUTUBE_REFRESH_TOKEN secret")
 
-    # 3. Build credentials from refresh token (stateless – no pickle needed)
+    # 3. Define scopes (must be the same as when you got the refresh token)
+    SCOPES = ["https://www.googleapis.com/auth/youtube.force-ssl"]
+
+    # 4. Build credentials from refresh token
     flow = InstalledAppFlow.from_client_secrets_file(
         client_secrets_path,
-        scopes=["https://www.googleapis.com/auth/youtube.force-ssl"]   # broadest scope → fixes playlist error
+        scopes=SCOPES
     )
 
     creds = Credentials(
-        token=None,                     # we don’t have a short-lived access token yet
+        token=None,
         refresh_token=refresh_token,
         client_id=flow.client_config["client_id"],
         client_secret=flow.client_config["client_secret"],
         token_uri="https://oauth2.googleapis.com/token",
-        scopes=flow.scopes
+        scopes=SCOPES   # ← Use the SCOPES list here, not flow.scopes
     )
 
     # Force refresh to get a valid access token
