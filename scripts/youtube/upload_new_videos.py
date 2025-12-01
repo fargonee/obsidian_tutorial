@@ -107,15 +107,6 @@ def upload_new_videos() -> None:
                     log.red(f"Video: https://youtu.be/{youtube_id}")
                     log.red(f"Error: {e}")
                     raise
-
-        # === All good → save progress ===
-        video_ids_path.parent.mkdir(parents=True, exist_ok=True)
-        with open(video_ids_path, "w", encoding="utf-8") as f:
-            json.dump(video_ids, f, indent=4, ensure_ascii=False)
-
-        log.cyan.bold("ALL VIDEOS UPLOADED AND ADDED IN PERFECT ORDER!")
-        log.cyan(f"Playlist → https://www.youtube.com/playlist?list={PLAYLIST_ID}")
-
     except Exception as e:
         if is_quota_exceeded_error(e) is True:
             log.red.bold("DAILY QUOTA LIMIT EXCEETED, We'll come back tomorrow")
@@ -130,3 +121,11 @@ def upload_new_videos() -> None:
 
             log.yellow("Progress saved. Next run will continue from the next video.")
             sys.exit(1)
+    finally:
+        # === All good → save progress ===
+        video_ids_path.parent.mkdir(parents=True, exist_ok=True)
+        with open(video_ids_path, "w", encoding="utf-8") as f:
+            json.dump(video_ids, f, indent=4, ensure_ascii=False)
+
+        log.cyan.bold("ALL VIDEOS UPLOADED AND ADDED IN PERFECT ORDER!")
+        log.cyan(f"Playlist → https://www.youtube.com/playlist?list={PLAYLIST_ID}")
